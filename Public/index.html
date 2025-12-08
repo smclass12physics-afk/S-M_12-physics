@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IIT-JEE-study Materials</title>
+  <title>Study Materials Class 9 Science</title>
   <style>
     body {
       font-family: sans-serif;
@@ -41,13 +41,15 @@
       cursor: pointer;
     }
 
-    #appContainer { display: none; }
+    #appContainer { 
+      display: none; 
+    }
 
     iframe {
       width: 100%;
-      height: 650px;
+      height: calc(100vh - 20px); /* 📌 FULL height */
       border: 2px solid #004D40;
-      margin-top: 15px;
+      margin-top: 0;               /* 📌 Remove top margin to get more space */
       border-radius: 6px;
       box-shadow: 0 3px 6px rgba(0,0,0,0.1);
     }
@@ -56,20 +58,20 @@
 
 <body>
   <div id="loginContainer">
-    <h2>Login to IIT-JEE Practice Test</h2>
+    <h2>Login to Study Materials Class 9 Science</h2>
     <input type="email" id="emailInput" placeholder="Enter your email" required />
     <button onclick="login()">Login</button>
   </div>
 
   <div id="appContainer">
-    <h1 style="color:#006064; font-size:16px;">Study Material</h1>
+    <!-- 🔥 Heading Removed for Maximum Space -->
     <iframe id="viewer" src=""></iframe>
   </div>
 
   <script>
-    const BACKEND_URL = "https://math-study-material.onrender.com";
+    const BACKEND_URL = "https://sm-cl-9-backen.onrender.com";
 
-    // 🔥 CHANGE THIS LINK — your single URL here
+    // 🔥 Your single URL
     const SINGLE_LINK = "https://gten-educational-platform.github.io/Class-12/Study materials Math IIT- JEE.html";
 
     async function login() {
@@ -93,7 +95,6 @@
         document.getElementById("loginContainer").style.display = "none";
         document.getElementById("appContainer").style.display = "block";
 
-        // Load the only link
         document.getElementById("viewer").src = SINGLE_LINK;
 
       } else {
@@ -101,7 +102,7 @@
       }
     }
 
-    // Auto-login if token still valid
+    // Auto-login
     window.onload = async function() {
       const email = localStorage.getItem("studentEmail");
       const token = localStorage.getItem("sessionToken");
@@ -117,15 +118,13 @@
       if (data.valid) {
         document.getElementById("loginContainer").style.display = "none";
         document.getElementById("appContainer").style.display = "block";
-
-        // Load single fixed link
         document.getElementById("viewer").src = SINGLE_LINK;
       } else {
         localStorage.clear();
       }
     };
 
-    // Auto-logout if logged in on another device
+    // Auto logout if opened on another device
     setInterval(async () => {
       const email = localStorage.getItem("studentEmail");
       const token = localStorage.getItem("sessionToken");
