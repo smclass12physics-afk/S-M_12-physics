@@ -1002,7 +1002,7 @@ document.addEventListener("click", (e) => {
   const isOpen = sidebar.classList.contains("open");
 
   if (
-    window.innerWidth <= 1024 &&   // apply only on mobile/tablet
+    window.innerWidth <= 1224 &&   // apply only on mobile/tablet
     isOpen &&
     !sidebar.contains(e.target) && // click is not inside sidebar
     !menuBtn.contains(e.target)    // click is not on menu button
